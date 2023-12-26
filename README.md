@@ -5,21 +5,6 @@ This is a fork of [Filament Breezy by Jeff Greco](https://github.com/HydePHP/fil
 
 You are free to use the package yourself, but there are no stability guarantees (unless the package somehow becomes popular enough for people to desire that).
 
-## Features & Screenshots
-My Profile - Personal info with avatar support
-![Screenshot of Profile with avatar support](./art/profile-with-avatar.png)
-Update password with customizable validation rules
-![Screenshot of Two Factor codes](./art/password-update.png)
-Protected sensitive actions with a password confirmation modal Action
-![Screenshot of Password confirmation action](./art/actions-confirm-password.png)
-Two factor authentication with recovery codes
-![Screenshot of Two Factor codes](./art/2fa-confirm.png)
-Force the user to enable two factor authentication before they can use the app
-![Screenshot of forcing two factor auth](./art/2fa-must-enable.png)
-Create and manage Sanctum personal access tokens
-![Screenshot of Sanctum token management](./art/sanctum-manage-tokens.png)
-![Screenshot of Sanctum token management](./art/sanctum-create.png)
-
 ## Installation
 
 First, add the following to your `composer.json`
@@ -46,6 +31,28 @@ Optionally, you can publish the views using:
 ```bash
 php artisan vendor:publish --tag="filament-breezy-views"
 ```
+
+## Changes from Breezy
+
+- Changes the default branch to `main` and resets versioning to `v0.1.0`
+- Changes the root namespace and vendor name to HydePHP
+- Does not guarantee package stability as it is designed for internal use
+- Requires a `composer.json` repository configuration (package not published to Packagist)
+
+## Features & Screenshots
+My Profile - Personal info with avatar support
+![Screenshot of Profile with avatar support](./art/profile-with-avatar.png)
+Update password with customizable validation rules
+![Screenshot of Two Factor codes](./art/password-update.png)
+Protected sensitive actions with a password confirmation modal Action
+![Screenshot of Password confirmation action](./art/actions-confirm-password.png)
+Two factor authentication with recovery codes
+![Screenshot of Two Factor codes](./art/2fa-confirm.png)
+Force the user to enable two factor authentication before they can use the app
+![Screenshot of forcing two factor auth](./art/2fa-must-enable.png)
+Create and manage Sanctum personal access tokens
+![Screenshot of Sanctum token management](./art/sanctum-manage-tokens.png)
+![Screenshot of Sanctum token management](./art/sanctum-create.png)
 
 ## Usage & Configuration
 
