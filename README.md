@@ -11,11 +11,11 @@ First, add the following to your `composer.json`
 
 ```json
 "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/hydephp/filament-breezier.git"
-        }
-    ]
+    {
+        "type": "vcs",
+        "url": "https://github.com/hydephp/filament-breezier.git"
+    }
+]
 ```
 
 Next, install the package via Composer:
