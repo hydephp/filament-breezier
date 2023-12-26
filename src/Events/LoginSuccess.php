@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Events;
+namespace HydePHP\FilamentBreezy\Events;
 
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Foundation\Events\Dispatchable;

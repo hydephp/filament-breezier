@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy;
+namespace HydePHP\FilamentBreezy;
 
 use Closure;
 use Filament\Forms;
@@ -14,7 +14,7 @@ use Illuminate\Cache\Repository;
 use Filament\Navigation\MenuItem;
 use PragmaRX\Google2FA\Google2FA;
 use BaconQrCode\Renderer\Color\Rgb;
-use Jeffgreco13\FilamentBreezy\Pages;
+use HydePHP\FilamentBreezy\Pages;
 use BaconQrCode\Renderer\ImageRenderer;
 use Illuminate\Validation\Rules\Password;
 use BaconQrCode\Renderer\RendererStyle\Fill;
@@ -22,12 +22,12 @@ use BaconQrCode\Renderer\Image\SvgImageBackEnd;
 use Filament\Support\Concerns\EvaluatesClosures;
 use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use Illuminate\Contracts\Auth\Authenticatable;
-use Jeffgreco13\FilamentBreezy\Livewire\PersonalInfo;
-use Jeffgreco13\FilamentBreezy\Livewire\SanctumTokens;
-use Jeffgreco13\FilamentBreezy\Livewire\UpdatePassword;
-use Jeffgreco13\FilamentBreezy\Middleware\MustTwoFactor;
-use Jeffgreco13\FilamentBreezy\Livewire\TwoFactorAuthentication;
-use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
+use HydePHP\FilamentBreezy\Livewire\PersonalInfo;
+use HydePHP\FilamentBreezy\Livewire\SanctumTokens;
+use HydePHP\FilamentBreezy\Livewire\UpdatePassword;
+use HydePHP\FilamentBreezy\Middleware\MustTwoFactor;
+use HydePHP\FilamentBreezy\Livewire\TwoFactorAuthentication;
+use HydePHP\FilamentBreezy\Pages\TwoFactorPage;
 
 class BreezyCore implements Plugin
 {

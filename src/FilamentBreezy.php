@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy;
+namespace HydePHP\FilamentBreezy;
 
 class FilamentBreezy
 {

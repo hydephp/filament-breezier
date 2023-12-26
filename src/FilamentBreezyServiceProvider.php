@@ -1,8 +1,8 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy;
+namespace HydePHP\FilamentBreezy;
 
-use Jeffgreco13\FilamentBreezy\Commands\Install;
+use HydePHP\FilamentBreezy\Commands\Install;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

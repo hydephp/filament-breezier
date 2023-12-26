@@ -1,17 +1,16 @@
 {
-    "name": "jeffgreco13/filament-breezy",
+    "name": "hydephp/filament-breezy",
     "description": "A custom package for Filament with login flow, profile and teams support.",
     "keywords": [
-        "jeffgreco13",
         "laravel",
         "filament-breezy"
     ],
-    "homepage": "https://github.com/jeffgreco13/filament-breezy",
+    "homepage": "https://github.com/hydephp/filament-breezy",
     "license": "MIT",
     "authors": [
         {
-            "name": "Jeff Greco",
-            "email": "jeff@jeffpgreco.com",
+            "name": "Caen De Silva",
+            "email": "caen@desilva.se",
             "role": "Developer"
         }
     ],
@@ -33,13 +32,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Jeffgreco13\\FilamentBreezy\\": "src/",
-            "Jeffgreco13\\FilamentBreezy\\Database\\Factories\\": "database/factories/"
+            "HydePHP\\FilamentBreezy\\": "src/",
+            "HydePHP\\FilamentBreezy\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "Jeffgreco13\\FilamentBreezy\\Tests\\": "tests/"
+            "HydePHP\\FilamentBreezy\\Tests\\": "tests/"
         }
     },
     "scripts": {
@@ -59,10 +58,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "Jeffgreco13\\FilamentBreezy\\FilamentBreezyServiceProvider"
+                "HydePHP\\FilamentBreezy\\FilamentBreezyServiceProvider"
             ],
             "aliases": {
-                "FilamentBreezy": "Jeffgreco13\\FilamentBreezy\\Facades\\FilamentBreezy"
+                "FilamentBreezy": "HydePHP\\FilamentBreezy\\Facades\\FilamentBreezy"
             }
         }
     },

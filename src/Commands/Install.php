@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Commands;
+namespace HydePHP\FilamentBreezy\Commands;
 
 use Illuminate\Console\Command;
 
@@ -43,13 +43,13 @@ class Install extends Command
         $this->newLine();
         if ($this->confirm('All done! Would you like to show some love by starring the Breezy on GitHub?', true)) {
             if (PHP_OS_FAMILY === 'Darwin') {
-                exec('open https://github.com/jeffgreco13/filament-breezy');
+                exec('open https://github.com/HydePHP/filament-breezy');
             }
             if (PHP_OS_FAMILY === 'Linux') {
-                exec('xdg-open https://github.com/jeffgreco13/filament-breezy');
+                exec('xdg-open https://github.com/HydePHP/filament-breezy');
             }
             if (PHP_OS_FAMILY === 'Windows') {
-                exec('start https://github.com/jeffgreco13/filament-breezy');
+                exec('start https://github.com/HydePHP/filament-breezy');
             }
 
             $this->components->info('Thank you!');

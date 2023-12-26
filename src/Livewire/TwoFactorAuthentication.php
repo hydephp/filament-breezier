@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Livewire;
+namespace HydePHP\FilamentBreezy\Livewire;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -10,7 +10,7 @@ use Filament\Facades\Filament;
 use Illuminate\Support\Collection;
 use Filament\Notifications\Notification;
 use Filament\Actions\Contracts\HasActions;
-use Jeffgreco13\FilamentBreezy\Actions\PasswordButtonAction;
+use HydePHP\FilamentBreezy\Actions\PasswordButtonAction;
 
 class TwoFactorAuthentication extends MyProfileComponent
 {

@@ -1,12 +1,12 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Traits;
+namespace HydePHP\FilamentBreezy\Traits;
 
 use Illuminate\Support\Str;
 use Filament\Facades\Filament;
 use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Jeffgreco13\FilamentBreezy\Models\BreezySession;
+use HydePHP\FilamentBreezy\Models\BreezySession;
 
 trait TwoFactorAuthenticatable
 {

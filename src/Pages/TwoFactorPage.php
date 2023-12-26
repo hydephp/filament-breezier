@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Pages;
+namespace HydePHP\FilamentBreezy\Pages;
 
 use Filament\Forms;
 use Filament\Actions\Action;

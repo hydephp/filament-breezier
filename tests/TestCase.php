@@ -1,9 +1,9 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Tests;
+namespace HydePHP\FilamentBreezy\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use Jeffgreco13\FilamentBreezy\FilamentBreezyServiceProvider;
+use HydePHP\FilamentBreezy\FilamentBreezyServiceProvider;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -16,7 +16,7 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (
                 string $modelName
-            ) => "Jeffgreco13\\FilamentBreezy\\Database\\Factories\\" .
+            ) => "HydePHP\\FilamentBreezy\\Database\\Factories\\" .
                 class_basename($modelName) .
                 "Factory"
         );

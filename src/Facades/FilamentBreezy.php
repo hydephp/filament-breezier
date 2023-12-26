@@ -1,16 +1,16 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Facades;
+namespace HydePHP\FilamentBreezy\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @see \Jeffgreco13\FilamentBreezy\FilamentBreezy
+ * @see \HydePHP\FilamentBreezy\FilamentBreezy
  */
 class FilamentBreezy extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return \Jeffgreco13\FilamentBreezy\FilamentBreezy::class;
+        return \HydePHP\FilamentBreezy\FilamentBreezy::class;
     }
 }

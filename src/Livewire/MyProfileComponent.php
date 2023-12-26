@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Livewire;
+namespace HydePHP\FilamentBreezy\Livewire;
 
 use Livewire\Component;
 use Filament\Forms\Contracts\HasForms;

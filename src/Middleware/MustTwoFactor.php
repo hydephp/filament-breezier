@@ -1,6 +1,6 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Middleware;
+namespace HydePHP\FilamentBreezy\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;

@@ -1,12 +1,12 @@
 <?php
 
-namespace Jeffgreco13\FilamentBreezy\Models;
+namespace HydePHP\FilamentBreezy\Models;
 
 use Filament\Facades\Filament;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Casts\Attribute;
-use Jeffgreco13\FilamentBreezy\Events\LoginSuccess;
+use HydePHP\FilamentBreezy\Events\LoginSuccess;
 
 class BreezySession extends Model
 {
