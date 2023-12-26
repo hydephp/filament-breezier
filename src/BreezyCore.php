@@ -2,51 +2,63 @@
 
 namespace HydePHP\FilamentBreezy;
 
-use Closure;
-use Filament\Forms;
-use Filament\Panel;
-use Livewire\Livewire;
+use BaconQrCode\Renderer\Color\Rgb;
+use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use BaconQrCode\Renderer\ImageRenderer;
+use BaconQrCode\Renderer\RendererStyle\Fill;
+use BaconQrCode\Renderer\RendererStyle\RendererStyle;
 use BaconQrCode\Writer;
-use Illuminate\Support\Arr;
+use Closure;
 use Filament\Contracts\Plugin;
 use Filament\Facades\Filament;
-use Illuminate\Cache\Repository;
+use Filament\Forms;
 use Filament\Navigation\MenuItem;
-use PragmaRX\Google2FA\Google2FA;
-use BaconQrCode\Renderer\Color\Rgb;
-use HydePHP\FilamentBreezy\Pages;
-use BaconQrCode\Renderer\ImageRenderer;
-use Illuminate\Validation\Rules\Password;
-use BaconQrCode\Renderer\RendererStyle\Fill;
-use BaconQrCode\Renderer\Image\SvgImageBackEnd;
+use Filament\Panel;
 use Filament\Support\Concerns\EvaluatesClosures;
-use BaconQrCode\Renderer\RendererStyle\RendererStyle;
-use Illuminate\Contracts\Auth\Authenticatable;
 use HydePHP\FilamentBreezy\Livewire\PersonalInfo;
 use HydePHP\FilamentBreezy\Livewire\SanctumTokens;
+use HydePHP\FilamentBreezy\Livewire\TwoFactorAuthentication;
 use HydePHP\FilamentBreezy\Livewire\UpdatePassword;
 use HydePHP\FilamentBreezy\Middleware\MustTwoFactor;
-use HydePHP\FilamentBreezy\Livewire\TwoFactorAuthentication;
 use HydePHP\FilamentBreezy\Pages\TwoFactorPage;
+use Illuminate\Cache\Repository;
+use Illuminate\Contracts\Auth\Authenticatable;
+use Illuminate\Support\Arr;
+use Illuminate\Validation\Rules\Password;
+use Livewire\Livewire;
+use PragmaRX\Google2FA\Google2FA;
 
 class BreezyCore implements Plugin
 {
     use EvaluatesClosures;
-    protected $engine;
-    protected $cache;
-    protected $myProfile;
-    protected $avatarUploadComponent;
-    protected $twoFactorAuthentication;
-    protected $forceTwoFactorAuthentication;
-    protected $twoFactorRouteAction;
-    protected $ignoredMyProfileComponents = [];
-    protected $registeredMyProfileComponents = [];
-    protected $passwordUpdateRules = ['min:8'];
-    protected bool $passwordUpdateRequireCurrent = true;
-    protected $sanctumTokens = false;
-    protected $sanctumPermissions = ["create", "view", "update", "delete"];
 
-    public function __construct(Google2FA $engine, Repository $cache = null)
+    protected $engine;
+
+    protected $cache;
+
+    protected $myProfile;
+
+    protected $avatarUploadComponent;
+
+    protected $twoFactorAuthentication;
+
+    protected $forceTwoFactorAuthentication;
+
+    protected $twoFactorRouteAction;
+
+    protected $ignoredMyProfileComponents = [];
+
+    protected $registeredMyProfileComponents = [];
+
+    protected $passwordUpdateRules = ['min:8'];
+
+    protected bool $passwordUpdateRequireCurrent = true;
+
+    protected $sanctumTokens = false;
+
+    protected $sanctumPermissions = ['create', 'view', 'update', 'delete'];
+
+    public function __construct(Google2FA $engine, ?Repository $cache = null)
     {
         $this->engine = $engine;
         $this->cache = $cache;
@@ -61,6 +73,7 @@ class BreezyCore implements Plugin
     {
         return app(static::class);
     }
+
     public function register(Panel $panel): void
     {
         $panel
@@ -71,12 +84,14 @@ class BreezyCore implements Plugin
             Livewire::component('two-factor-page', Pages\TwoFactorPage::class);
         }
     }
+
     protected function preparePages(): array
     {
         $collection = collect();
         if ($this->myProfile) {
             $collection->push(Pages\MyProfilePage::class);
         }
+
         return $collection->toArray();
     }
 
@@ -86,13 +101,13 @@ class BreezyCore implements Plugin
             if ($this->sanctumTokens) {
                 Livewire::component('sanctum_tokens', SanctumTokens::class);
                 $this->myProfileComponents([
-                    'sanctum_tokens' => SanctumTokens::class
+                    'sanctum_tokens' => SanctumTokens::class,
                 ]);
             }
             if ($this->twoFactorAuthentication) {
                 Livewire::component('two_factor_authentication', TwoFactorAuthentication::class);
                 $this->myProfileComponents([
-                    'two_factor_authentication' => TwoFactorAuthentication::class
+                    'two_factor_authentication' => TwoFactorAuthentication::class,
                 ]);
             }
 
@@ -100,15 +115,15 @@ class BreezyCore implements Plugin
             Livewire::component('update_password', UpdatePassword::class);
             $this->myProfileComponents([
                 'personal_info' => PersonalInfo::class,
-                'update_password' => UpdatePassword::class
+                'update_password' => UpdatePassword::class,
             ]);
 
             if ($this->myProfile['shouldRegisterUserMenu']) {
                 if ($panel->hasTenancy()) {
                     $tenantId = request()->route()->parameter('tenant');
-                    if ($tenantId && $tenant = app($panel->getTenantModel())::where($panel->getTenantSlugAttribute() ?? 'id', $tenantId)->first()){
+                    if ($tenantId && $tenant = app($panel->getTenantModel())::where($panel->getTenantSlugAttribute() ?? 'id', $tenantId)->first()) {
                         $panel->userMenuItems([
-                            'account' => MenuItem::make()->url(Pages\MyProfilePage::getUrl(panel:$panel->getId(),tenant: $tenant)),
+                            'account' => MenuItem::make()->url(Pages\MyProfilePage::getUrl(panel: $panel->getId(), tenant: $tenant)),
                         ]);
                     }
                 } else {
@@ -130,8 +145,10 @@ class BreezyCore implements Plugin
         return Filament::getCurrentPanel();
     }
 
-    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile'){
+    public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile')
+    {
         $this->myProfile = get_defined_vars();
+
         return $this;
     }
 
@@ -148,6 +165,7 @@ class BreezyCore implements Plugin
     public function avatarUploadComponent(Closure $component)
     {
         $this->avatarUploadComponent = $component;
+
         return $this;
     }
 
@@ -155,14 +173,16 @@ class BreezyCore implements Plugin
     {
         $fileUpload = Forms\Components\FileUpload::make('avatar_url')
             ->label(__('filament-breezy::default.fields.avatar'))->avatar();
-        return is_null($this->avatarUploadComponent) ? $fileUpload : $this->evaluate($this->avatarUploadComponent, namedInjections:[
-            'fileUpload' => $fileUpload
+
+        return is_null($this->avatarUploadComponent) ? $fileUpload : $this->evaluate($this->avatarUploadComponent, namedInjections: [
+            'fileUpload' => $fileUpload,
         ]);
     }
 
     public function withoutMyProfileComponents(array $components)
     {
         $this->ignoredMyProfileComponents = $components;
+
         return $this;
     }
 
@@ -184,16 +204,18 @@ class BreezyCore implements Plugin
             fn (string $component) => $component::getSort()
         );
 
-        if ($this->shouldForceTwoFactor()){
+        if ($this->shouldForceTwoFactor()) {
             $components = $components->only(['two_factor_authentication']);
         }
+
         return $components->all();
     }
 
-    public function passwordUpdateRules(array | Password $rules, bool $requiresCurrentPassword = true)
+    public function passwordUpdateRules(array|Password $rules, bool $requiresCurrentPassword = true)
     {
         $this->passwordUpdateRequireCurrent = $requiresCurrentPassword;
         $this->passwordUpdateRules = $rules;
+
         return $this;
     }
 
@@ -212,11 +234,12 @@ class BreezyCore implements Plugin
         return $this->{$key}['shouldRegisterNavigation'];
     }
 
-    public function enableTwoFactorAuthentication(bool $condition = true, bool $force = false, string | Closure | array | null $action = TwoFactorPage::class)
+    public function enableTwoFactorAuthentication(bool $condition = true, bool $force = false, string|Closure|array|null $action = TwoFactorPage::class)
     {
         $this->twoFactorAuthentication = $condition;
         $this->forceTwoFactorAuthentication = $force;
         $this->twoFactorRouteAction = $action;
+
         return $this;
     }
 
@@ -225,7 +248,7 @@ class BreezyCore implements Plugin
         return $this->forceTwoFactorAuthentication;
     }
 
-    public function getTwoFactorRouteAction(): string | Closure | array | null
+    public function getTwoFactorRouteAction(): string|Closure|array|null
     {
         return $this->twoFactorRouteAction;
     }
@@ -267,7 +290,7 @@ class BreezyCore implements Plugin
         $timestamp = $this->engine->verifyKeyNewer(
             $secret,
             $code,
-            optional($this->cache)->get($key = 'filament.2fa_codes.' . md5($code))
+            optional($this->cache)->get($key = 'filament.2fa_codes.'.md5($code))
         );
 
         if ($timestamp !== false) {
@@ -281,24 +304,25 @@ class BreezyCore implements Plugin
 
     public function shouldForceTwoFactor(): bool
     {
-        return $this->forceTwoFactorAuthentication && !$this->auth()->user()?->hasConfirmedTwoFactor();
+        return $this->forceTwoFactorAuthentication && ! $this->auth()->user()?->hasConfirmedTwoFactor();
     }
 
-    public function enableSanctumTokens(bool $condition = true,?array $permissions = null)
+    public function enableSanctumTokens(bool $condition = true, ?array $permissions = null)
     {
         $this->sanctumTokens = $condition;
-        if (!is_null($permissions)){
+        if (! is_null($permissions)) {
             $this->sanctumPermissions = $permissions;
         }
+
         return $this;
     }
 
     public function getSanctumPermissions(): array
     {
-        return collect($this->sanctumPermissions)->mapWithKeys(function($item,$key){
+        return collect($this->sanctumPermissions)->mapWithKeys(function ($item, $key) {
             $key = is_string($key) ? $key : strtolower($item);
+
             return [$key => $item];
         })->toArray();
     }
-
 }

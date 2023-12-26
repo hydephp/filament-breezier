@@ -2,8 +2,8 @@
 
 namespace HydePHP\FilamentBreezy\Tests;
 
-use Illuminate\Database\Eloquent\Factories\Factory;
 use HydePHP\FilamentBreezy\FilamentBreezyServiceProvider;
+use Illuminate\Database\Eloquent\Factories\Factory;
 use Livewire\LivewireServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
 
@@ -16,9 +16,9 @@ class TestCase extends Orchestra
         Factory::guessFactoryNamesUsing(
             fn (
                 string $modelName
-            ) => "HydePHP\\FilamentBreezy\\Database\\Factories\\" .
-                class_basename($modelName) .
-                "Factory"
+            ) => 'HydePHP\\FilamentBreezy\\Database\\Factories\\'.
+                class_basename($modelName).
+                'Factory'
         );
     }
 
@@ -33,7 +33,7 @@ class TestCase extends Orchestra
 
     public function getEnvironmentSetUp($app)
     {
-        config()->set("database.default", "testing");
+        config()->set('database.default', 'testing');
 
         /*
         $migration = include __DIR__.'/../database/migrations/create_filament-breezy_table.php.stub';

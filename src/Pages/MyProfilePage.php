@@ -8,7 +8,7 @@ class MyProfilePage extends Page
 {
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
-    protected static ?string $slug = "my-profile";
+    protected static ?string $slug = 'my-profile';
 
     protected static string $view = 'filament-breezy::filament.pages.my-profile';
 
@@ -42,10 +42,8 @@ class MyProfilePage extends Page
         return filament('filament-breezy')->shouldRegisterNavigation('myProfile');
     }
 
-
     public function getRegisteredMyProfileComponents(): array
     {
         return filament('filament-breezy')->getRegisteredMyProfileComponents();
     }
-
 }
