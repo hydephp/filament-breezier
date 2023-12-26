@@ -1,7 +1,6 @@
-# In order to use the development branch in Composer without versioning issues, we need a branch called main
+# In order to use the development branch in Composer without versioning issues, we need a branch called main,
 # as it thinks the default branch is an invalid version constraint, and we can't rename the default branch
-# without losing fork syncing functionality. So this workflow mirrors the default branch to the main
-# branch which is readonly and used for Composer.
+# without losing fork syncing functionality. So this workflow mirrors the default branch to the main one.
 
 name: Sync main branch
 
@@ -20,7 +19,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Merge into Release
-        uses: devmasx/merge-branch@v1.4
+        uses: devmasx/merge-branch@v1
         with:
           type: now
           from_branch: 2.x
