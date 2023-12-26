@@ -38,6 +38,7 @@ php artisan vendor:publish --tag="filament-breezy-views"
 - Requires a `composer.json` repository configuration (package not published to Packagist)
 - Does not guarantee package stability as it is designed for internal use
 - Adds feature to ignore MyProfile components [`#306`](https://github.com/jeffgreco13/filament-breezy/pull/306)
+- Formats the code style, making it easier to read
 
 ## Features & Screenshots
 My Profile - Personal info with avatar support
