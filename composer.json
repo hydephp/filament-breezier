@@ -63,6 +63,9 @@
             "aliases": {
                 "FilamentBreezy": "HydePHP\\FilamentBreezy\\Facades\\FilamentBreezy"
             }
+        },
+        "branch-alias": {
+            "dev-main": "2.x-dev"
         }
     },
     "minimum-stability": "dev",
