@@ -37,6 +37,7 @@ php artisan vendor:publish --tag="filament-breezy-views"
 - Changes the root namespace and vendor name to HydePHP and resets versioning to `v0.1.0`
 - Requires a `composer.json` repository configuration (package not published to Packagist)
 - Does not guarantee package stability as it is designed for internal use
+- Adds feature to ignore MyProfile components [`#306`](https://github.com/jeffgreco13/filament-breezy/pull/306)
 
 ## Features & Screenshots
 My Profile - Personal info with avatar support
