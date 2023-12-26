@@ -1,12 +1,9 @@
-![Filament Breezy cover art](./art/breezy-banner.png)
+# Welcome to Filament Breezier
+## An opinionated (at the moment internal) fork of Filament Breezy
 
-# Enhanced security for Filament v3+ Panels.
+This is a fork of [Filament Breezy by Jeff Greco](https://github.com/HydePHP/filament-breezy) designed for internal HydePHP use.
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
-[![Total Downloads](https://img.shields.io/packagist/dt/jeffgreco13/filament-breezy.svg?style=flat-square)](https://packagist.org/packages/jeffgreco13/filament-breezy)
-
-Enhanced security features for Filament (v3) Panels. Includes a customizable My Profile page with personal info & avatar support, update password, two factor authentication, and Sanctum token management.
-Installs in minutes!
+You are free to use the package yourself, but there are no stability guarantees (unless the package somehow becomes popular enough for people to desire that).
 
 ## Features & Screenshots
 My Profile - Personal info with avatar support
@@ -25,10 +22,22 @@ Create and manage Sanctum personal access tokens
 
 ## Installation
 
-Install the package via composer and install:
+First, add the following to your `composer.json`
+
+```json
+"repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/hydephp/filament-breezier.git"
+        }
+    ]
+```
+
+Next, install the package via Composer:
 
 ```bash
-composer require jeffgreco13/filament-breezy
+composer require hydephp/filament-breezy
+
 php artisan breezy:install
 ```
 
@@ -43,7 +52,7 @@ php artisan vendor:publish --tag="filament-breezy-views"
 You must enable Breezy by adding the class to your Filament Panel's `plugin()` or `plugins([])` method:
 
 ```php
-use Jeffgreco13\FilamentBreezy\BreezyCore;
+use HydePHP\FilamentBreezy\BreezyCore;
 
 class CustomersPanelProvider extends PanelProvider
 {
@@ -63,7 +72,7 @@ class CustomersPanelProvider extends PanelProvider
 Breezy will use the `authGuard` set on the Filament Panel that you create. You may update the authGuard as you please:
 
 ```php
-use Jeffgreco13\FilamentBreezy\BreezyCore;
+use HydePHP\FilamentBreezy\BreezyCore;
 
 class CustomersPanelProvider extends PanelProvider
 {
@@ -208,7 +217,7 @@ php artisan make:livewire MyCustomComponent
 2. Extend the `MyProfileComponent` class included with Breezy. This class implements Actions and Forms.
 
 ```php
-use Jeffgreco13\FilamentBreezy\Livewire\MyProfileComponent;
+use HydePHP\FilamentBreezy\Livewire\MyProfileComponent;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
 
@@ -284,7 +293,7 @@ namespace App\Livewire;
 
 use Filament\Forms;
 use Filament\Notifications\Notification;
-use Jeffgreco13\FilamentBreezy\PersonalInfo;
+use HydePHP\FilamentBreezy\PersonalInfo;
 
 class CustomPersonalInfo extends PersonalInfo
 {
@@ -324,10 +333,10 @@ A lot of the time this won't be necessary, though, as the default sort order is 
 
 ### Two Factor Authentication
 
-1. Add `Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your Authenticatable model:
+1. Add `HydePHP\FilamentBreezy\Traits\TwoFactorAuthenticatable` to your Authenticatable model:
 
 ```php
-use Jeffgreco13\FilamentBreezy\Traits\TwoFactorAuthenticatable;
+use HydePHP\FilamentBreezy\Traits\TwoFactorAuthenticatable;
 
 class User extends Authenticatable
 {
@@ -352,7 +361,7 @@ BreezyCore::make()
 The Breezy 2FA page can be swapped for a custom implementation (see above), same as the Filament auth pages. This allows, for example, to define a custom auth layout like so:
 
 ```php
-use Jeffgreco13\FilamentBreezy\Pages\TwoFactorPage;
+use HydePHP\FilamentBreezy\Pages\TwoFactorPage;
 
 class CustomTwoFactorPage extends TwoFactorPage
 {
@@ -378,7 +387,7 @@ BreezyCore::make()
 This button action will prompt the user to enter their password for sensitive actions (eg. delete). This action uses the same `'password_timeout'` number of seconds found in `config/auth.php`.
 
 ```php
-use Jeffgreco13\FilamentBreezy\Actions\PasswordButtonAction;
+use HydePHP\FilamentBreezy\Actions\PasswordButtonAction;
 
 PasswordButtonAction::make('secure_action')->action('doSecureAction')
 
@@ -421,8 +430,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
--   [Jeff Greco](https://github.com/jeffgreco13)
--   [All Contributors](../../contributors)
+- Based on https://github.com/jeffgreco13/filament-breezy
 
 ## License
 
