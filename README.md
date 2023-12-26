@@ -21,7 +21,7 @@ First, add the following to your `composer.json`
 Next, install the package via Composer:
 
 ```bash
-composer require hydephp/filament-breezy
+composer require hydephp/filament-breezier
 
 php artisan breezy:install
 ```

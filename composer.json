@@ -1,11 +1,11 @@
 {
-    "name": "hydephp/filament-breezy",
+    "name": "hydephp/filament-breezier",
     "description": "A custom package for Filament with login flow, profile and teams support.",
     "keywords": [
         "laravel",
-        "filament-breezy"
+        "filament-breezier"
     ],
-    "homepage": "https://github.com/hydephp/filament-breezy",
+    "homepage": "https://github.com/hydephp/filament-breezier",
     "license": "MIT",
     "authors": [
         {
