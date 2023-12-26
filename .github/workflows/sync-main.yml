@@ -1,0 +1,28 @@
+# In order to use the development branch in Composer without versioning issues, we need a branch called main
+# as it thinks the default branch is an invalid version constraint, and we can't rename the default branch
+# without losing fork syncing functionality. So this workflow mirrors the default branch to the main
+# branch which is readonly and used for Composer.
+
+name: Sync main branch
+
+on:
+  push:
+    branches: [ "2.x" ]
+
+permissions:
+  contents: write
+
+jobs:
+  sync-main:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Merge into Release
+        uses: devmasx/merge-branch@v1.4
+        with:
+          type: now
+          from_branch: 2.x
+          target_branch: main
+          github_token: ${{ github.token }}
