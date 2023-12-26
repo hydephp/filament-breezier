@@ -39,6 +39,7 @@ php artisan vendor:publish --tag="filament-breezy-views"
 - Does not guarantee package stability as it is designed for internal use
 - Adds feature to ignore MyProfile components [`#306`](https://github.com/jeffgreco13/filament-breezy/pull/306)
 - Formats the code style, making it easier to read
+- Removes test scaffolding as there are no tests
 - Removes language files other than English 
 
 ## Features & Screenshots
