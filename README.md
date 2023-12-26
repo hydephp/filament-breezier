@@ -34,10 +34,9 @@ php artisan vendor:publish --tag="filament-breezy-views"
 
 ## Changes from Breezy
 
-- Changes the default branch to `main` and resets versioning to `v0.1.0`
-- Changes the root namespace and vendor name to HydePHP
-- Does not guarantee package stability as it is designed for internal use
+- Changes the root namespace and vendor name to HydePHP and resets versioning to `v0.1.0`
 - Requires a `composer.json` repository configuration (package not published to Packagist)
+- Does not guarantee package stability as it is designed for internal use
 
 ## Features & Screenshots
 My Profile - Personal info with avatar support
