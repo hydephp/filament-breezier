@@ -58,6 +58,8 @@ class BreezyCore implements Plugin
 
     protected $sanctumPermissions = ['create', 'view', 'update', 'delete'];
 
+    protected ?string $customMyProfilePageClass = null;
+
     public function __construct(Google2FA $engine, ?Repository $cache = null)
     {
         $this->engine = $engine;
@@ -89,7 +91,7 @@ class BreezyCore implements Plugin
     {
         $collection = collect();
         if ($this->myProfile) {
-            $collection->push(Pages\MyProfilePage::class);
+            $collection->push($this->getMyProfilePageClass());
         }
 
         return $collection->toArray();
@@ -148,6 +150,14 @@ class BreezyCore implements Plugin
     public function myProfile(bool $condition = true, bool $shouldRegisterUserMenu = true, bool $shouldRegisterNavigation = false, bool $hasAvatars = false, string $slug = 'my-profile', ?string $navigationGroup = null)
     {
         $this->myProfile = get_defined_vars();
+
+        return $this;
+    }
+
+    /** @param class-string<Pages\MyProfilePage> $class */
+    public function customMyProfilePage(string $class)
+    {
+        $this->customMyProfilePageClass = $class;
 
         return $this;
     }
@@ -329,5 +339,10 @@ class BreezyCore implements Plugin
 
             return [$key => $item];
         })->toArray();
+    }
+
+    protected function getMyProfilePageClass(): string
+    {
+        return $this->customMyProfilePageClass ?? Pages\MyProfilePage::class;
     }
 }
