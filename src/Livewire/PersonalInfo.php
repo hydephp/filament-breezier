@@ -6,6 +6,7 @@ use Filament\Facades\Filament;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
+use Illuminate\Support\HtmlString;
 
 class PersonalInfo extends MyProfileComponent
 {
@@ -61,6 +62,12 @@ class PersonalInfo extends MyProfileComponent
             ->required()
             ->email()
             ->unique($this->userClass, ignorable: $this->user)
+            ->hint(fn (): ?HtmlString => new HtmlString(
+                $this->user->email_verified_at
+                    ? '<small x-data="{ tooltip: \'Your email has been verified\' }" x-tooltip="tooltip">Verified</small>'
+                    : null
+            ))
+            ->hintColor('success')
             ->label(__('filament-breezy::default.fields.email'));
     }
 
